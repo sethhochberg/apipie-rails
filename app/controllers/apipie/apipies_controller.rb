@@ -79,7 +79,8 @@ module Apipie
     helper_method :heading
 
     def get_language
-      lang = nil
+      return nil unless Apipie.configuration.translate
+      lang = Apipie.configuration.default_locale
       [:resource, :method, :version].each do |par|
         if params[par]
           splitted = params[par].split('.')
